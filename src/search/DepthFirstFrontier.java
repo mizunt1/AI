@@ -1,6 +1,6 @@
 package search;
 import java.util.Stack;
-public class DepthFirstFrontier{
+public class DepthFirstFrontier implements Frontier{
     private Stack<Node> stack = new Stack<Node>();
 	public Node remove(){
 		return stack.pop();

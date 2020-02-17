@@ -1,19 +1,20 @@
 package search;
 import search.Node;
 
+
 public class TreeSearch implements Search{
         // delcaring a field of the class
-    private Frontier frontier;
+    public static Frontier frontier;
     // constructor assigns 
-    public TreeSearch(Frontier frontier){
-	this.frontier = frontier;
+    public TreeSearch(Frontier newFrontier){
+	this.frontier = newFrontier;
 	}
-    public static Node returnSolution(State initialConfig, GoalTest goalConfig){
-	int num_nodes = 0
+    public Node returnSolution(State initialConfig, GoalTest goalTest){
+	int num_nodes = 0;
 	    // create a Queue of type Node 
 	    // we call this fifoQueue
-		frontier.add(new Node(null, null, initialConfiguration));
-		while (!fifoQueue.isEmpty()) {
+	        frontier.add(new Node(null, null, initialConfig));
+		while (!frontier.isEmpty()) {
 		    // remove the item from queue and if its goal, return the node
 		    // returns goal node
 		    // node has pointer to previous node, accessible by . parent
@@ -41,19 +42,6 @@ public class TreeSearch implements Search{
 		}
 		return null;
 		}
-    public static int getNumNodes(){
-	}
-	
-}
-
-    public static Node returnSolution(State initialConfiguration, GoalTest goalTest){	
-	BreadthFirstFrontier search = new BreadthFirstFrontier();
-	Node solution = search.findSolution(initialConfiguration, goalTest);
-	return solution;
-    }
-    
-    public static int getNumNodes(){
-	return search.num_nodes
-	
-	}
+    public int getNumNodes(){
+	return 1;}
 }

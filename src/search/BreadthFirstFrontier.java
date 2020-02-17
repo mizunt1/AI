@@ -2,7 +2,8 @@ package search;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.LinkedList;
-public class BreadthFirstFrontier{
+
+public class BreadthFirstFrontier implements Frontier{
     private Queue<Node> fifoQueue = new LinkedList<Node>();
 	public Node remove(){
 	    return fifoQueue.remove();
@@ -14,8 +15,8 @@ public class BreadthFirstFrontier{
 	    return fifoQueue.isEmpty();
 	}
 	public void clear(){
-	    else{
 		fifoQueue.clear();
-	    }	    		
+	    }	
 	}
-}
+
+

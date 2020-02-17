@@ -22,8 +22,9 @@ public class Demo {
 		
 		GoalTest goalTest = new TilesGoalTest();
 		// 
-		BreadthFirstFrontier Frontier = new BreadthFirstFrontier();
-		GraphSearch search = new GraphSearch(Frontier);
+		DepthFirstFrontier frontier = new DepthFirstFrontier();
+//		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
+		TreeSearch search = new TreeSearch(frontier);
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
 		
 		// CALL TREE SERARCH.FINDSOLUTION

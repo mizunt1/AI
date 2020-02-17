@@ -8,13 +8,13 @@ public class GraphSearch implements Search{
     public GraphSearch(Frontier frontier){
 	this.frontier = frontier;
 	}
-    public static Node returnSolution(State initialConfig, GoalTest goalConfig){
+    public Node returnSolution(State initialConfig, GoalTest goalTest){
 	/// NEEEED TO MAKE THIS IN TO GRAPH SEARCH!!!!!!
-	int num_nodes = 0
+	int num_nodes = 0;
 	    // create a Queue of type Node 
 	    // we call this fifoQueue
-		frontier.add(new Node(null, null, initialConfiguration));
-		while (!fifoQueue.isEmpty()) {
+		frontier.add(new Node(null, null, initialConfig));
+		while (frontier.isEmpty()) {
 		    // remove the item from queue and if its goal, return the node
 		    // returns goal node
 		    // node has pointer to previous node, accessible by . parent
@@ -42,7 +42,7 @@ public class GraphSearch implements Search{
 		}
 		return null;
 		}
-    public static int getNumNodes(){
-	}
+    public int getNumNodes(){
+	return 1;}
 	
 }
