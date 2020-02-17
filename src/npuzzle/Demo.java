@@ -3,10 +3,13 @@
 package npuzzle;
 
 import search.BreadthFirstFrontier;
+import search.DepthFirstFrontier;
 import search.GoalTest;
 import search.Node;
+import search.GraphSearch;
+import search.TreeSearch;
 
-public class BFTS_frontier_demo {
+public class Demo {
 	public static void main(String[] args) {
 		System.out.println("This is a demonstration of breadth-first tree search on 8-puzzle");
 		System.out.println();
@@ -19,7 +22,12 @@ public class BFTS_frontier_demo {
 		
 		GoalTest goalTest = new TilesGoalTest();
 		// 
-		Node solution = BreadthFirstFrontier.findSolution(initialConfiguration, goalTest);
+		BreadthFirstFrontier Frontier = new BreadthFirstFrontier();
+		GraphSearch search = new GraphSearch(Frontier);
+		Node solution = search.returnSolution(initialConfiguration, goalTest);
+		
+		// CALL TREE SERARCH.FINDSOLUTION
+		// GIVE THE FRONTIER 
 		// findsol takes in inputs (initalConfiguration, goalTest)
 		// goalTest is the condition for this game where goal is true.
 		// its an abstract fn that gets applied in BreadthFTSearch

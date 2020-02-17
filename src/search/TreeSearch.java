@@ -1,22 +1,23 @@
 package search;
+import search.Node;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
-
-public class BreadthFirstFrontier {
-    // creating a method findSolution which returns type Node
-    // takes input unitialConfiguration which is of type State and input goalTest, which is of type GoalTest
-	public static Node findSolution(State initialConfiguration, GoalTest goalTest) {
+public class TreeSearch implements Search{
+        // delcaring a field of the class
+    private Frontier frontier;
+    // constructor assigns 
+    public TreeSearch(Frontier frontier){
+	this.frontier = frontier;
+	}
+    public static Node returnSolution(State initialConfig, GoalTest goalConfig){
+	int num_nodes = 0
 	    // create a Queue of type Node 
 	    // we call this fifoQueue
-	    Frontier fifoQueue = new Frontier("queue");
-		fifoQueue.add(new Node(null, null, initialConfiguration));
+		frontier.add(new Node(null, null, initialConfiguration));
 		while (!fifoQueue.isEmpty()) {
 		    // remove the item from queue and if its goal, return the node
 		    // returns goal node
 		    // node has pointer to previous node, accessible by . parent
-			Node node = fifoQueue.remove();
+		    Node node = frontier.remove();
 			if (goalTest.isGoal(node.state))
 				return node;
 			else {
@@ -30,12 +31,29 @@ public class BreadthFirstFrontier {
 				    // add those accessible nodes to queue.
 				    // ready for expansion
 				    // goes around in loop
-				    fifoQueue.add(new Node(node, action, newState));
+
+				    frontier.add(new Node(node, action, newState));
+				    num_nodes += 1;
 				    // Node(parent, action, state)
 				    // add these nodes to the queue
 				}
 			}
 		}
 		return null;
+		}
+    public static int getNumNodes(){
+	}
+	
+}
+
+    public static Node returnSolution(State initialConfiguration, GoalTest goalTest){	
+	BreadthFirstFrontier search = new BreadthFirstFrontier();
+	Node solution = search.findSolution(initialConfiguration, goalTest);
+	return solution;
+    }
+    
+    public static int getNumNodes(){
+	return search.num_nodes
+	
 	}
 }
