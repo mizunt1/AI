@@ -32,6 +32,19 @@ public class Tiles implements State {
 		emptyTileRow = emptyRow;
 		emptyTileColumn = emptyColumn;
 	}
+
+        public boolean equals(State state) {
+	
+	    Tiles t = (Tiles)state;
+	    return t.hashCode() == this.hashCode();
+		}
+
+	public int hashCode(){
+	String a = "";
+	for (int i : this.tiles) a += i; 
+	return a.hashCode();
+	}
+
 	protected Tiles(int width, int[] tiles, int emptyTileRow, int emptyTileColumn) {
 		this.width = width;
 		this.tiles = tiles;

@@ -20,13 +20,19 @@ public class BreadthFirstFrontier {
 			if (goalTest.isGoal(node.state))
 				return node;
 			else {
+			    // if its not goal, see where we can go
 				for (Action action : node.state.getApplicableActions()) {
 				    // see where we can go from that node
-					State newState = node.state.getActionResult(action);
-					// set up nodes.
-					fifoQueue.add(new Node(node, action, newState));
-					// Node(parent, action, state)
-					// add these nodes to the queue
+				    // get applicable actions is under Tiles.java
+				    // Tiles implements state
+				    State newState = node.state.getActionResult(action);
+				    // get actionResult also in Tiles.java
+				    // add those accessible nodes to queue.
+				    // ready for expansion
+				    // goes around in loop
+				    fifoQueue.add(new Node(node, action, newState));
+				    // Node(parent, action, state)
+				    // add these nodes to the queue
 				}
 			}
 		}
