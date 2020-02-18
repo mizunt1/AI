@@ -38,11 +38,11 @@ public class GraphSearch implements Search{
 				    // add those accessible nodes to queue.
 				    // ready for expansion
 				    // goes around in loop
-				    //System.out.println(!state_list.contains(newState)); 
-				    System.out.println(num_visited); 
+				    System.out.println(!state_list.contains(newState)); 
+				    //System.out.println(num_visited); 
 				    
 				    if(!state_list.contains(newState)){
-					
+					state_list.add(newState);
 					frontier.add(new Node(node, action, newState));
 					num_visited += 1;
 					}
