@@ -5,11 +5,13 @@ import search.Node;
 public class TreeSearch implements Search{
         // delcaring a field of the class
     public static Frontier frontier;
+     int num_visited = 0;
     // constructor assigns 
     public TreeSearch(Frontier newFrontier){
 	this.frontier = newFrontier;
 	}
     public Node returnSolution(State initialConfig, GoalTest goalTest){
+	System.out.println("Performing tree search");
 	int num_nodes = 0;
 	    // create a Queue of type Node 
 	    // we call this fifoQueue
@@ -34,7 +36,7 @@ public class TreeSearch implements Search{
 				    // goes around in loop
 
 				    frontier.add(new Node(node, action, newState));
-				    num_nodes += 1;
+				    num_visited += 1;
 				    // Node(parent, action, state)
 				    // add these nodes to the queue
 				}
@@ -43,5 +45,5 @@ public class TreeSearch implements Search{
 		return null;
 		}
     public int getNumNodes(){
-	return 1;}
+	return num_visited;}
 }

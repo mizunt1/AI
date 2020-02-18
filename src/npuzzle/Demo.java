@@ -8,10 +8,10 @@ import search.GoalTest;
 import search.Node;
 import search.GraphSearch;
 import search.TreeSearch;
+import java.io.*; 
 
 public class Demo {
 	public static void main(String[] args) {
-		System.out.println("This is a demonstration of breadth-first tree search on 8-puzzle");
 		System.out.println();
 		// specify initial configuration
 		Tiles initialConfiguration = new Tiles(new int[][] {
@@ -24,9 +24,11 @@ public class Demo {
 		// 
 		DepthFirstFrontier frontier = new DepthFirstFrontier();
 //		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
-		TreeSearch search = new TreeSearch(frontier);
+//		TreeSearch search = new TreeSearch(frontier);
+		GraphSearch search = new GraphSearch(frontier);
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
-		
+		int states_visited = search.getNumNodes();
+		System.out.println(states_visited); 
 		// CALL TREE SERARCH.FINDSOLUTION
 		// GIVE THE FRONTIER 
 		// findsol takes in inputs (initalConfiguration, goalTest)
