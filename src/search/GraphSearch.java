@@ -13,13 +13,11 @@ public class GraphSearch implements Search{
 	}
     public Node returnSolution(State initialConfig, GoalTest goalTest){
 	System.out.println("Performing graph search");
-	/// NEEEED TO MAKE THIS IN TO GRAPH SEARCH!!!!!!
 
 	    // create a Queue of type Node 
 	    // we call this fifoQueue
 		frontier.add(new Node(null, null, initialConfig));
 		while (!frontier.isEmpty()) {
-//		    System.out.println("check0"); 
 		    // remove the item from queue and if its goal, return the node
 		    // returns goal node
 		    // node has pointer to previous node, accessible by . parent
@@ -27,7 +25,6 @@ public class GraphSearch implements Search{
 			if (goalTest.isGoal(node.state))
 				return node;
 			else {
-//			    System.out.println("check1"); 
 			    // if its not goal, see where we can go
 				for (Action action : node.state.getApplicableActions()) {
 				    // see where we can go from that node
@@ -38,15 +35,11 @@ public class GraphSearch implements Search{
 				    // add those accessible nodes to queue.
 				    // ready for expansion
 				    // goes around in loop
-				    //System.out.println(!state_list.contains(newState)); 
-				    //System.out.println(num_visited); 
-				    
 				    if(!state_list.contains(newState)){
 					state_list.add(newState);
 					frontier.add(new Node(node, action, newState));
 					num_visited += 1;
 					}
-				    // Node(parent, action, state)
 				    // add these nodes to the queue
 				}
 			}

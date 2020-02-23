@@ -33,26 +33,6 @@ public class Tiles implements State {
 		emptyTileColumn = emptyColumn;
 	}
     
-//        public boolean equals(State state) {
-//	    Tiles t = (Tiles)state;
-//	    return t.hashCode() == this.hashCode();
-//	}
-
-
-//        public boolean equals(State state) {
-//	    Tiles t = (Tiles)state;
-//	    if(t.tiles == this.tiles){
-//		if(t.emptyTileRow == this.emptyTileRow){
-//		    if(t.emptyTileColumn == this.emptyTileColumn){
-//			return true;
-//		    }
-//		    
-//		}
-//	    }
-//	    return false;
-//	}
-
-
     @Override
 	public boolean equals(Object that) {
 		Tiles tobj = (Tiles)that;

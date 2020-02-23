@@ -22,14 +22,12 @@ public class Demo {
 		
 		GoalTest goalTest = new TilesGoalTest();
 		// 
-//		DepthFirstFrontier frontier = new DepthFirstFrontier();
-		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
+		DepthFirstFrontier frontier = new DepthFirstFrontier();
+//		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
 		TreeSearch search = new TreeSearch(frontier);
 //		GraphSearch search = new GraphSearch(frontier);
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
 		int states_visited = search.getNumNodes();
-		// CALL TREE SERARCH.FINDSOLUTION
-		// GIVE THE FRONTIER 
 		// findsol takes in inputs (initalConfiguration, goalTest)
 		// goalTest is the condition for this game where goal is true.
 		// its an abstract fn that gets applied in BreadthFTSearch
