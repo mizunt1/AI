@@ -2,7 +2,7 @@ package npuzzle;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+import java.util.Arrays;
 import search.Action;
 import search.State;
 
@@ -33,10 +33,10 @@ public class Tiles implements State {
 		emptyTileColumn = emptyColumn;
 	}
     
-        public boolean equals(State state) {
-	    Tiles t = (Tiles)state;
-	    return t.hashCode() == this.hashCode();
-	}
+//        public boolean equals(State state) {
+//	    Tiles t = (Tiles)state;
+//	    return t.hashCode() == this.hashCode();
+//	}
 
 
 //        public boolean equals(State state) {
@@ -52,14 +52,31 @@ public class Tiles implements State {
 //	    return false;
 //	}
 
-        public int hashCode(){
-	 String a = "";
-	 for (int i : this.tiles) a += i; 
-	 return a.hashCode();
-	}
 
-    
-	protected Tiles(int width, int[] tiles, int emptyTileRow, int emptyTileColumn) {
+    @Override
+	public boolean equals(Object that) {
+		Tiles tobj = (Tiles)that;
+		if (this == tobj) {
+		    return true;
+		}
+		if (that instanceof State) {
+		    if (
+			(this.width == tobj.width) && (Arrays.equals(this.tiles,tobj.tiles)) && (this.emptyTileRow == tobj.emptyTileRow) && (this.emptyTileColumn == tobj.emptyTileColumn)){
+			return true;
+		    }
+		    else {
+			return false;
+		    }
+		}
+		return false;
+	}
+    public int hashCode() {
+	String str="";
+	str = width + " " + emptyTileRow + " " + emptyTileColumn + " " + Arrays.toString(tiles);
+	
+	return str.hashCode();
+    }    
+    protected Tiles(int width, int[] tiles, int emptyTileRow, int emptyTileColumn) {
 		this.width = width;
 		this.tiles = tiles;
 		this.emptyTileRow = emptyTileRow;

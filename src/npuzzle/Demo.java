@@ -22,13 +22,12 @@ public class Demo {
 		
 		GoalTest goalTest = new TilesGoalTest();
 		// 
-		DepthFirstFrontier frontier = new DepthFirstFrontier();
-//		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
-//		TreeSearch search = new TreeSearch(frontier);
-		GraphSearch search = new GraphSearch(frontier);
+//		DepthFirstFrontier frontier = new DepthFirstFrontier();
+		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
+		TreeSearch search = new TreeSearch(frontier);
+//		GraphSearch search = new GraphSearch(frontier);
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
 		int states_visited = search.getNumNodes();
-		System.out.println(states_visited); 
 		// CALL TREE SERARCH.FINDSOLUTION
 		// GIVE THE FRONTIER 
 		// findsol takes in inputs (initalConfiguration, goalTest)
@@ -36,6 +35,7 @@ public class Demo {
 		// its an abstract fn that gets applied in BreadthFTSearch
 
 		new NPuzzlePrinting().printSolution(solution);
+		System.out.println(states_visited); 
 		// NPuzzlePrinting takes solution and prints it for each step
 		// iterates from node to node using . parent
 	}
