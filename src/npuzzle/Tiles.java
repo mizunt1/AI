@@ -32,7 +32,9 @@ public class Tiles implements State {
 		emptyTileRow = emptyRow;
 		emptyTileColumn = emptyColumn;
 	}
-    
+    public int[] getTiles(){
+	return tiles;
+	}
     @Override
 	public boolean equals(Object that) {
 		Tiles tobj = (Tiles)that;
@@ -56,6 +58,8 @@ public class Tiles implements State {
 	
 	return str.hashCode();
     }    
+
+    
     protected Tiles(int width, int[] tiles, int emptyTileRow, int emptyTileColumn) {
 		this.width = width;
 		this.tiles = tiles;

@@ -5,9 +5,12 @@ package npuzzle;
 import search.BreadthFirstFrontier;
 import search.DepthFirstFrontier;
 import search.GoalTest;
+import search.BestFirstFrontier;
 import search.Node;
 import search.GraphSearch;
 import search.TreeSearch;
+import search.AStarFunction;
+import search.MisplacedTilesHeuristicFunction;
 import java.io.*; 
 
 public class Demo {
@@ -22,10 +25,12 @@ public class Demo {
 		
 		GoalTest goalTest = new TilesGoalTest();
 		// 
-		DepthFirstFrontier frontier = new DepthFirstFrontier();
+//		DepthFirstFrontier frontier = new DepthFirstFrontier();
 //		BreadthFirstFrontier frontier = new BreadthFirstFrontier();
-		TreeSearch search = new TreeSearch(frontier);
-//		GraphSearch search = new GraphSearch(frontier);
+		BestFirstFrontier frontier = new BestFirstFrontier(new AStarFunction( new MisplacedTilesHeuristicFunction()));
+
+//		TreeSearch search = new TreeSearch(frontier);
+		GraphSearch search = new GraphSearch(frontier);
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
 		int states_visited = search.getNumNodes();
 		// findsol takes in inputs (initalConfiguration, goalTest)
