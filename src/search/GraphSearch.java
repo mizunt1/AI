@@ -6,6 +6,7 @@ public class GraphSearch implements Search{
     // delcaring a field of the class
     private Frontier frontier;
     int num_visited = 0;
+    int max_len_front = 0;
     LinkedList<State> state_list = new LinkedList<State>(); 
     // constructor assigns 
     public GraphSearch(Frontier frontier){
@@ -39,6 +40,9 @@ public class GraphSearch implements Search{
 					state_list.add(newState);
 					frontier.add(new Node(node, action, newState));
 					num_visited += 1;
+					if(frontier.returnLen()>max_len_front){
+					    max_len_front = frontier.returnLen();
+					    }
 					}
 				    // add these nodes to the queue
 				}
@@ -48,5 +52,9 @@ public class GraphSearch implements Search{
 		}
     public int getNumNodes(){
 	return num_visited;}
+    
+    public int getMaxFrontier(){
+	return max_len_front;
+	}
 	
 }

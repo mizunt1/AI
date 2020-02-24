@@ -8,5 +8,6 @@ public interface Frontier{
 	public void add(Node addedNode);
 	public boolean isEmpty();
 	public void clear();
+        public int returnLen();
 	}
     

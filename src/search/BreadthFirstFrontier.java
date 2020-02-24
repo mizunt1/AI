@@ -15,6 +15,10 @@ public class BreadthFirstFrontier implements Frontier{
 	}
 	public void clear(){
 		fifoQueue.clear();
+		}
+	public int returnLen(){
+	    return fifoQueue.size();
+	    
 	    }	
 	}
 

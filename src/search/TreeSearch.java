@@ -5,7 +5,8 @@ import search.Node;
 public class TreeSearch implements Search{
         // delcaring a field of the class
     public static Frontier frontier;
-     int num_visited = 0;
+    int num_visited = 0;
+    int max_len_front = 0;
     // constructor assigns 
     public TreeSearch(Frontier newFrontier){
 	this.frontier = newFrontier;
@@ -37,6 +38,10 @@ public class TreeSearch implements Search{
 
 				    frontier.add(new Node(node, action, newState));
 				    num_visited += 1;
+				    if(frontier.returnLen()>max_len_front){
+					    max_len_front = frontier.returnLen();
+				    }
+								
 				    // Node(parent, action, state)
 				    // add these nodes to the queue
 				}
@@ -46,4 +51,7 @@ public class TreeSearch implements Search{
 		}
     public int getNumNodes(){
 	return num_visited;}
+    public int getMaxFrontier(){
+	return max_len_front;
+    }
 }

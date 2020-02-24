@@ -26,5 +26,8 @@ public class BestFirstFrontier implements Frontier{
 	public void clear(){
 		pQueue.clear();
 	    }	
+        public int returnLen(){
+	    return pQueue.size();
+	    }
 	}
 

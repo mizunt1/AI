@@ -15,4 +15,8 @@ public class DepthFirstFrontier implements Frontier{
 		stack.clear();
 	    }
 
+        public int returnLen(){
+	    return stack.size();
+	    }
+
     }
