@@ -1,5 +1,65 @@
-// notes but compile as javac npuzzle/DFTS_Demo.java
-// run as java npuzzle.BFTS_Demo 
+// notes:compile as javac npuzzle/Demo.java
+// run as java npuzzle.Demo
+
+/*Results:
+
+Depth First Graph search
+Performing graph search
+states visited:34266
+max frontier size:14480
+time taken/ms:17411
+
+Breadth First Graph search
+Performing graph search
+states visited:4359
+max frontier size:1592
+time taken/ms:131
+
+
+
+Breadth First Tree search
+Performing tree search
+states visited:2298273
+max frontier size:1473871
+time taken/ms:1076
+
+
+
+Best First Tree search
+Performing tree search
+states visited:963
+max frontier size:613
+time taken/ms:2
+
+
+
+Best First Graph search
+Performing graph search
+states visited:189
+max frontier size:82
+time taken/ms:2
+
+Comments:
+Depth First graph search takes the longest time. Going down one branch till the end 
+requires traversing many states. 17411 ms
+Breadth First graph search takes less time of 131ms. 
+Breadth First tree search takes longer, 1076 seconds. This is unsurprising, the graph search
+version of any search will take less time than the tree search version as it does not look at
+states which it has seen before
+
+Best First tree search and graph search take approximately the same amount of time of 2ms.
+However graph search is more efficient as it visits much fewer nodes.
+
+
+*/
+
+
+
+
+
+
+
+
 package npuzzle;
 
 import search.BreadthFirstFrontier;
@@ -33,15 +93,15 @@ public class Demo {
 		Node solution = search.returnSolution(initialConfiguration, goalTest);
 		long endTime = System.nanoTime();
 		int states_visited = search.getNumNodes();
-		new NPuzzlePrinting().printSolution(solution);
+		//new NPuzzlePrinting().printSolution(solution);
 		int maxfront = search.getMaxFrontier();
 		
 		System.out.println("states visited:" + states_visited); 
 		System.out.println("max frontier size:" + maxfront); 
-		System.out.println("time taken/s:" + (endTime - startTime)/1000000000); 
-		
-
+		System.out.println("time taken/ms:" + (endTime - startTime)/1000000); 
+		System.out.print( "\n\n\n" );
 		System.out.println("Depth First Tree search will loop for ever, not tested");
+
 		//frontier.clear();
 		//TreeSearch search = new TreeSearch(frontier);
 		//Node solution = search.returnSolution(initialConfiguration, goalTest);
@@ -56,42 +116,53 @@ public class Demo {
 		int maxfront2 = search2.getMaxFrontier();
 		System.out.println("states visited:" + states_visited2); 
 		System.out.println("max frontier size:" + maxfront2); 
-		System.out.println("time taken/s:" + (endTime2 - startTime2)/1000000000); 
-
-		//new NPuzzlePrinting().printSolution(solution);
+		System.out.println("time taken/ms:" + (endTime2 - startTime2)/1000000); 
+		System.out.print( "\n\n\n" );
+		//new NPuzzlePrinting().printSolution(solution2);
 		
 		System.out.println("Breadth First Tree search");
 		Bfrontier.clear();
 		TreeSearch search3 = new TreeSearch(Bfrontier);
-		
+		long startTime3 = System.nanoTime();
 		Node solution3 = search3.returnSolution(initialConfiguration, goalTest);
+		long endTime3 = System.nanoTime();
 		int states_visited3 = search3.getNumNodes();
-		System.out.println(states_visited3); 
-		//new NPuzzlePrinting().printSolution(solution);
+		int maxfront3 = search3.getMaxFrontier();
+		System.out.println("states visited:" + states_visited3); 
+		System.out.println("max frontier size:" + maxfront3); 
+		System.out.println("time taken/ms:" + (endTime3 - startTime3)/1000000); 
+		System.out.print( "\n\n\n" );
+		//new NPuzzlePrinting().printSolution(solution3);
 
 		System.out.println("Best First Tree search");
 		BestFirstFrontier BestFrontier = new BestFirstFrontier(new AStarFunction( new MisplacedTilesHeuristicFunction()));
 		TreeSearch search4 = new TreeSearch(BestFrontier);
-		
+		long startTime4 = System.nanoTime();
 		Node solution4 = search4.returnSolution(initialConfiguration, goalTest);
+		long endTime4 = System.nanoTime();
 		int states_visited4 = search4.getNumNodes();
-		System.out.println(states_visited4); 
-		//new NPuzzlePrinting().printSolution(solution);
+		int maxfront4 = search4.getMaxFrontier();
+		System.out.println("states visited:" + states_visited4); 
+		System.out.println("max frontier size:" + maxfront4); 
+		System.out.println("time taken/ms:" + (endTime4 - startTime4)/1000000); 
+		System.out.print( "\n\n\n" );
+		//new NPuzzlePrinting().printSolution(solution4);
 
 		System.out.println("Best First Graph search");
 		BestFrontier.clear();
 
 		GraphSearch search5 = new GraphSearch(BestFrontier);
+		long startTime5 = System.nanoTime();
 		Node solution5 = search5.returnSolution(initialConfiguration, goalTest);
+		long endTime5 = System.nanoTime();
 		int states_visited5 = search5.getNumNodes();
-		System.out.println(states_visited5); 
-		//new NPuzzlePrinting().printSolution(solution);
+		int maxfront5 = search5.getMaxFrontier();
+		System.out.println("states visited:" + states_visited5); 
+		System.out.println("max frontier size:" + maxfront5); 
+		System.out.println("time taken/ms:" + (endTime5 - startTime4)/1000000); 
+		System.out.print( "\n\n\n" );
+		//new NPuzzlePrinting().printSolution(solution5);
 		
-
-
-
-
-
 		// findsol takes in inputs (initalConfiguration, goalTest)
 		// goalTest is the condition for this game where goal is true.
 		// its an abstract fn that gets applied in BreadthFTSearch
@@ -100,3 +171,4 @@ public class Demo {
 		// iterates from node to node using . parent
 	}
 }
+
